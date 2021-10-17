@@ -59,8 +59,8 @@ Create a DenseNet model
 - `reduction`: the factor by which the number of feature maps is scaled across each transition
 - `nclasses`: the number of output classes
 """
-function densenet(inplanes, growth_rates; reduction = 0.5, nclasses = 1000)
-  layers = conv_bn((7, 7), 3, inplanes; stride = 2, pad = (3, 3), bias = false)
+function densenet(inplanes, growth_rates; reduction = 0.5, nclasses = 1000, nchannels_input = 3)
+  layers = conv_bn((7, 7), nchannels_input, inplanes; stride = 2, pad = (3, 3), bias = false)
   push!(layers, MaxPool((3, 3), stride = 2, pad = (1, 1)))
 
   outplanes = 0
